@@ -1,5 +1,5 @@
-import { UserService } from "src/service/user-service";
-import { TodoService } from "src/service/todo-service";
+import { UserService } from "../services/user-service";
+import { TodoService } from "../services/todo-service";
 
 export type AppContext = {
   userService: UserService;
