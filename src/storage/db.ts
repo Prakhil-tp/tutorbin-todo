@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bluebird from "bluebird";
 
 type Tinput = {
   dbUrl: string;
@@ -6,6 +7,7 @@ type Tinput = {
 
 const connect = ({ dbUrl }: Tinput) => {
   const makeConnection = () => {
+    mongoose.Promise = bluebird;
     mongoose
       .connect(dbUrl)
       .then(() => {
