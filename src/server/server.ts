@@ -3,8 +3,9 @@ dotenv.config();
 
 import express from "express";
 import { createServer } from "http";
-import { AppContext } from "../types";
+import { AppContext, ServiceContext } from "../types";
 import { UserService, TodoService } from "../services";
+import { UserRepository, TodoRepository } from "../repositories";
 import db from "../storage/db";
 import App from "./app";
 
@@ -15,9 +16,17 @@ const httpServer = createServer(httpApp);
 // connect db
 db.connect({ dbUrl: process.env.DB_URL });
 
+const userRepository = new UserRepository();
+const todoRepository = new TodoRepository();
+
+const serviceContext: ServiceContext = {
+  userRepository,
+  todoRepository
+};
+
 // initialzeServices
-const userService = new UserService();
-const todoService = new TodoService();
+const userService = new UserService(serviceContext);
+const todoService = new TodoService(serviceContext);
 
 const appContext: AppContext = {
   userService,

@@ -1,7 +1,9 @@
 import express, { Application } from "express";
+import { Server } from "http";
 import { AppContext } from "../types";
 import { ErrorHandler } from "../middlewares";
-import { Server } from "http";
+import { UserController } from "../controllers/user-controller";
+import { TodoController } from "../controllers/todo-controller";
 
 export default class App {
   public app: Application;
@@ -39,5 +41,10 @@ export default class App {
     this.app.use(ErrorHandler.serverErrorHandler);
   }
 
-  private initializeControllers() {}
+  private initializeControllers() {
+    const userController = new UserController(this.appContext);
+    const todoController = new TodoController(this.appContext);
+    this.app.use("/", userController.router);
+    this.app.use("/", todoController.router);
+  }
 }
