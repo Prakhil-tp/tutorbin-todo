@@ -21,7 +21,7 @@ Make sure you have the `node.js` installed on your system. It is what interpret 
 Now, we can set up our code in the machine. for that just clone the repository and install necessary packages: follow the below commands.
 
 ``` sh
-git clone https://github.com/Prakhil-tp/totorbin-todo.git
+git clone https://github.com/Prakhil-tp/tutorbin-todo.git
 cd totorbin-todo
 npm install
 ```
