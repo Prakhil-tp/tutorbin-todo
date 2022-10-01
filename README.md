@@ -1,5 +1,5 @@
-# tutorbin-todo
-Assignment - Backend Developer Node.js
+# todo
+An sample todo app using mongo, node, express and typescript
 
 ## Endpoints
 
